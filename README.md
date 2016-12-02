@@ -6,6 +6,16 @@
 oc new-build https://github.com/etsauer/rdu-consulting-demo.git --name=rdu-php-demo --strategy=docker --docker-image=registry.access.redhat.com/rhscl/php-56-rhel7 -n openshift
 ```
 
+Add the following line to Dockerfile:
+```
+ADD security.txt /opt/app-root/etc/security.txt
+```
+
+Run the following:
+```
+oc start-build rdu-php-demo -n openshift
+```
+
 ## Participant Instructions
 
 1. Click "New Project"
