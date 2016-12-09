@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: rdu-php-demo
+  template: php-supply-chain-app
 metadata:
   annotations:
     description: An example CakePHP application with a MySQL database
     iconClass: icon-php
     tags: quickstart,php,cakephp,mysql
-  name: rdu-php-demo
+  name: php-supply-chain-app
   namespace: openshift
 objects:
 - apiVersion: v1
@@ -62,7 +62,7 @@ objects:
           value: ${COMPOSER_MIRROR}
         from:
           kind: ImageStreamTag
-          name: rdu-php-demo:latest
+          name: php-supply-chain-app:latest
           namespace: ${NAMESPACE}
       type: Source
     triggers:
@@ -87,7 +87,7 @@ objects:
           execNewPod:
             command:
             - ./migrate-database.sh
-            containerName: rdu-php-demo
+            containerName: php-supply-chain-app
           failurePolicy: Retry
       type: Recreate
     template:
@@ -123,7 +123,7 @@ objects:
               port: 8080
             initialDelaySeconds: 30
             timeoutSeconds: 3
-          name: rdu-php-demo
+          name: php-supply-chain-app
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -139,7 +139,7 @@ objects:
     - imageChangeParams:
         automatic: true
         containerNames:
-        - rdu-php-demo
+        - php-supply-chain-app
         from:
           kind: ImageStreamTag
           name: ${NAME}:latest
@@ -228,7 +228,7 @@ parameters:
   displayName: Name
   name: NAME
   required: true
-  value: rdu-php-demo
+  value: php-supply-chain-app
 - description: The OpenShift Namespace where the ImageStream resides.
   displayName: Namespace
   name: NAMESPACE
