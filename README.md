@@ -82,7 +82,7 @@ sh-4.2$ ls /opt/app-root/etc/
 conf.d  httpdconf.sed  php.d  php.ini.template  scl_enable  security.txt
 ```
 
-### Make an Imag Change
+### Make an Image Change
 
 At this point, it's time to put your Operator hat back on, and direct audience attention back to you. You are about to make a change to your corporation's standard PHP image and push it out to all running applications.
 
